@@ -1,0 +1,87 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0-1
+      author: Orlov
+      changes:
+        - createTable:
+            tableName: Employee
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sur_name
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: birthday
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: position
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: extension_number
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: office_id
+                  type: int
+  - changeSet:
+      id: 0-2
+      author: Orlov
+      changes:
+        - createTable:
+            tableName: Office
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: number
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone_office
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: varchar
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 0-3
+      author: Orlov
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: office_id_fk
+            baseTableName: Employee
+            baseColumnNames: office_id
+            referencedTableName: Office
+            referencedColumnNames: id
